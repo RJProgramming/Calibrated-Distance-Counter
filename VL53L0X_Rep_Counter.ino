@@ -4,7 +4,6 @@
 
 VL53L0X sensor;
 
-
 // Uncomment this line to use long range mode. This
 // increases the sensitivity of the sensor and extends its
 // potential range, but increases the likelihood of getting
@@ -30,12 +29,15 @@ int calibratedDistance = 0;
 int distanceInInch = 0;
 int countDownCheck = 0;
 int reps = 0;
-int calibrationPad = 12; 
+
 // plus or minus inches (12 would be plus or minus 1' for a 2' max)
+int calibrationPad = 12; 
+
 
 
 void setup()
 {
+  //Serial output high to attempt to allow serial monitor keep up with arduino output
   Serial.begin(115200);
   Wire.begin();
   pinMode(greenLED, OUTPUT);
@@ -117,6 +119,5 @@ if ((distanceInInch < (calibratedDistance - calibrationPad))) {reps ++;}
   }
 
 }
-
  
 }
