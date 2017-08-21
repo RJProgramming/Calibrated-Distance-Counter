@@ -7,4 +7,4 @@ This library needs to be installed before you can use the sketch: https://github
 
 ![ScreenShot](https://i.imgur.com/xPzf11u.png)
 
-When you being using the program open a serial monitor of your choice (the standard Arduino IDE monitor is fine). A count down begins while the device is measuring distance. Whatever measurement the device is reading when the countdown reaches 0 is now the "calibrated distance". From this point on if anything is closer to the sensor than the calibrated distance, the "rep" (repetition) count will increment by 1.
+When the program starts, open a serial monitor of your choice (the standard Arduino IDE monitor is fine). A count down begins while the device is measuring distance. Whatever measurement the device is reading when the countdown reaches 0 is now the "calibrated distance". From this point on if anything is closer to the sensor than the calibrated distance, the "rep" (repetition) count will increment by 1.
