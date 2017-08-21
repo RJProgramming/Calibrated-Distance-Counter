@@ -23,11 +23,12 @@ int countDownCheck = 0;
 int reps = 0;
 
 // The calibration pad acts as a buffer to the reading after intial distance is saved
+// change this value depending on your applcation
 int calibrationPad = 2; 
 
 void setup()
 {
-  //fast baud to help the serial monitor keep up with the program
+  //faster than average baud to help the serial monitor keep up with the program
   Serial.begin(115200);
   Wire.begin();
   pinMode(greenLED, OUTPUT);
