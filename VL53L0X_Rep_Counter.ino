@@ -4,15 +4,7 @@
 
 VL53L0X sensor;
 
-// Uncomment this line to use long range mode. This
-// increases the sensitivity of the sensor and extends its
-// potential range, but increases the likelihood of getting
-// an inaccurate reading because of reflections from objects
-// other than the intended target. It works best in dark
-// conditions.
-
 #define LONG_RANGE
-
 
 // Uncomment ONE of these two lines to get
 // - higher speed at the cost of lower accuracy OR
@@ -30,14 +22,12 @@ int distanceInInch = 0;
 int countDownCheck = 0;
 int reps = 0;
 
-// plus or minus inches (12 would be plus or minus 1' for a 2' max)
-int calibrationPad = 12; 
-
-
+// The calibration pad acts as a buffer to the reading after intial distance is saved
+int calibrationPad = 2; 
 
 void setup()
 {
-  //Serial output high to attempt to allow serial monitor keep up with arduino output
+  //fast baud to help the serial monitor keep up with the program
   Serial.begin(115200);
   Wire.begin();
   pinMode(greenLED, OUTPUT);
@@ -91,8 +81,7 @@ if (countDown == 10){
 
 void loop() {
 
-  
-  distanceInInch = sensor.readRangeSingleMillimeters() / 24.5;
+distanceInInch = sensor.readRangeSingleMillimeters() / 24.5;
 
 if (calibratedDistance == 0) {calibrate_distance();}
 
@@ -100,7 +89,6 @@ if (countDownCheck == 1) {
 
 if ((distanceInInch < (calibratedDistance - calibrationPad))) {reps ++;}
 
- //Serial.println(inchReading);
     Serial.print("Distance in Inches: "); 
     Serial.print(distanceInInch); 
     Serial.print(" Calibrated Distance: "); 
@@ -119,5 +107,5 @@ if ((distanceInInch < (calibratedDistance - calibrationPad))) {reps ++;}
   }
 
 }
- 
+
 }
